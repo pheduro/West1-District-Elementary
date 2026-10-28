@@ -72,7 +72,7 @@ section.p{padding-top:6px}
 .db .tg{position:absolute;top:2px;bottom:2px;width:0;border-left:2px dashed var(--red);opacity:.7}
 .db .bridge{position:absolute;top:11px;height:4px;border-radius:2px;background:var(--line)}
 .db .dot{position:absolute;top:5px;width:16px;height:16px;border-radius:50%;margin-left:-8px;border:2px solid var(--card)}
-.db .dot.pt{background:var(--ptc)}.db .dot.te{background:var(--tec)}
+.db .dot.pt,.db .dot.st1{background:var(--ptc)}.db .dot.st2{background:var(--amber)}.db .dot.te{background:var(--tec)}
 .db .gap{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);margin-top:12px;align-items:center}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
@@ -176,7 +176,7 @@ details{margin-top:14px}summary{cursor:pointer;font-weight:600}
   </section>
 
   <section class="p" id="s-schools" hidden>
-    <div class="card" style="margin-top:12px"><h2>Analysis by school</h2><p class="sub">Select a school for its results, where tasks and tests part ways, and possible interventions.</p>
+    <div class="card" style="margin-top:12px"><h2>Analysis by school</h2><p class="sub">Select a school for its results, where the Summative Tests and the Term Exam part ways, and possible interventions.</p>
       <div class="chips" id="schips"></div><div id="sbody"></div></div>
   </section>
 
@@ -244,15 +244,18 @@ const X0=50;
 const bar=(n,v)=>`<div class="row"><div class="n">${n}</div><div class="trk"><div class="fill" style="width:${Math.max(0,(v-X0)*2)}%;background:${barColor(v)}"></div><div class="tgt" style="left:${(T-X0)*2}%"></div></div><div class="val">${f1(v)}</div></div>`;
 const legend=()=>BANDS.map(b=>`<span><i class="${b[0]}"></i>${b[1]}</span>`).join('');
 const pos=v=>((Math.max(40,Math.min(100,v))-40)/60*100).toFixed(2);
-function dumb(label,pt,te){
-  if(te==null)return`<div class="db"><div>${label}</div><div class="tr"></div><div class="gap" style="color:var(--muted)">–</div></div>`;
-  const lo=Math.min(pt,te),hi=Math.max(pt,te),gap=pt-te;
-  return`<div class="db"><div>${label}</div><div class="tr" title="PT ${f1(pt)}, TE ${f1(te)}"><div class="tg" style="left:${pos(T)}%"></div><div class="bridge" style="left:${pos(lo)}%;width:${(pos(hi)-pos(lo)).toFixed(2)}%"></div><div class="dot pt" style="left:${pos(pt)}%"></div><div class="dot te" style="left:${pos(te)}%"></div></div><div class="gap">${gap>0?'':'−'}${Math.abs(gap).toFixed(1)}</div></div>`}
+/* Summative Test 1, Summative Test 2 and Term Exam (all written tests). Gap = average of the two summative tests minus the Term Exam. */
+function dumb(label,s1,s2,te){
+  const sts=[s1,s2].filter(v=>v!=null);
+  if(te==null||!sts.length)return`<div class="db"><div>${label}</div><div class="tr"></div><div class="gap" style="color:var(--muted)">–</div></div>`;
+  const stAvg=sts.reduce((a,b)=>a+b,0)/sts.length, gap=stAvg-te;
+  const vs=[...sts,te], lo=Math.min(...vs), hi=Math.max(...vs);
+  return`<div class="db"><div>${label}</div><div class="tr" title="ST 1 ${f1(s1)}, ST 2 ${f1(s2)}, TE ${f1(te)}"><div class="tg" style="left:${pos(T)}%"></div><div class="bridge" style="left:${pos(lo)}%;width:${(pos(hi)-pos(lo)).toFixed(2)}%"></div>${s1!=null?`<div class="dot st1" style="left:${pos(s1)}%"></div>`:''}${s2!=null?`<div class="dot st2" style="left:${pos(s2)}%"></div>`:''}<div class="dot te" style="left:${pos(te)}%"></div></div><div class="gap">${gap>0?'':'−'}${Math.abs(gap).toFixed(1)}</div></div>`}
 const tbl=(head,rows)=>'<thead><tr>'+head.map((h,i)=>`<th${i<1?' class="l"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+rows+'</tbody>';
 const ul=a=>`<ul class="l">${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
 const lab=r=>`G${r.g} ${r.l}`;
 const chips=(box,labels,cur,fn)=>{box.innerHTML='';labels.forEach((t,i)=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=t;b.setAttribute('aria-pressed',i===cur);b.onclick=()=>{[...box.children].forEach(x=>x.setAttribute('aria-pressed',x===b));fn(i)};box.appendChild(b)})};
-const dleg='<div class="legend"><span><i class="o" style="background:var(--ptc)"></i>Performance Task</span><span><i class="o" style="background:var(--tec)"></i>Term Exam</span><span><span class="tgtkey" style="border-left-style:dashed"></span>75</span></div>';
+const dleg='<div class="legend"><span><i class="o" style="background:var(--ptc)"></i>Summative Test 1</span><span><i class="o" style="background:var(--amber)"></i>Summative Test 2</span><span><i class="o" style="background:var(--tec)"></i>Term Exam</span><span><span class="tgtkey" style="border-left-style:dashed"></span>75</span></div>';
 
 /* ---------- global figures ---------- */
 const nAll=all.length, ovAll=mean(all.map(r=>r.o)), ge75=all.filter(r=>r.o>=T).length, lt75=nAll-ge75;
@@ -307,7 +310,9 @@ function schoolView(i){
   const low=[...rs].sort((a,b)=>a.o-b.o).slice(0,3), top=[...rs].sort((a,b)=>b.o-a.o).slice(0,3);
   const gTE=[1,2,3,4,5,6].map(g=>[g,cm(rs.filter(r=>r.g===g),4)]).sort((a,b)=>a[1]-b[1]);
   const aMeans=AREAS_ORDER.map(a=>[a,cm(rs.filter(r=>r.a===a),5)]).filter(x=>x[1]!=null).sort((a,b)=>a[1]-b[1]);
-  const bigGap=[...rs].sort((a,b)=>(b.c[1]-b.c[4])-(a.c[1]-a.c[4]))[0];
+  const stA=r=>(r.c[2]+r.c[3])/2;
+  const bigGap=[...rs].sort((a,b)=>(stA(b)-b.c[4])-(stA(a)-a.c[4]))[0];
+  const stM=(cm(rs,2)+cm(rs,3))/2;
   const lowTE=[...rs].sort((a,b)=>a.c[4]-b.c[4]).slice(0,4);
   const fl=rs.filter(r=>r.fl);
   const lede=lt75By(n)===0?`No result is under 75 overall, but the Term Exam is still below 75 in ${t75} of ${M} results.`:`${lt75By(n)} of ${M} results are under 75 overall and the Term Exam is below 75 in ${t75}.`;
@@ -316,9 +321,9 @@ function schoolView(i){
     `Highest results: ${top.map(r=>`${lab(r)} (${f1(r.o)})`).join(', ')}.`,
     `Written Work (${f1(ww)}) and Performance Tasks (${f1(pt)}) are above 80.`]);
   const co=ul([
-    `The Term Exam averages ${f1(te)}, ${f1(pt-te)} points below Performance Tasks. It is under 75 in ${t75} of ${M} results and under 70 in ${t70}.`,
+    `The Term Exam averages ${f1(te)}, ${f1(stM-te)} points ${stM>=te?'below':'above'} the Summative Tests (${f1(cm(rs,2))} and ${f1(cm(rs,3))}). It is under 75 in ${t75} of ${M} results and under 70 in ${t70}.`,
     `Lowest overall results: ${low.map(r=>`${lab(r)} (${f1(r.o)})`).join(', ')}.`,
-    `Widest task-to-test gap: ${lab(bigGap)}, ${f1(bigGap.c[1])} on Performance Tasks against ${f1(bigGap.c[4])} on the Term Exam.`,
+    `Widest drop from the Summative Tests to the Term Exam: ${lab(bigGap)}, ${f1(stA(bigGap))} on the Summative Tests (average of both) against ${f1(bigGap.c[4])} on the Term Exam.`,
     `Grade ${gTE[0][0]} has the lowest Term Exam average (${f1(gTE[0][1])}); Grade ${gTE[1][0]} is next (${f1(gTE[1][1])}).`,
     `${nm(aMeans[0][0])} is the lowest learning area overall (${f1(aMeans[0][1])}).`
     +(s1>=5?` Summative Test 1 is under 70 in ${s1} results.`:'')]
@@ -333,7 +338,7 @@ function schoolView(i){
   const full=rs.map(r=>`<tr><td class="l">G${r.g} · ${r.l}</td>`+r.c.map(cell).join('')+cell(r.o)+'</tr>').join('');
   el('sbody').innerHTML=`<h3>${n} Elementary School · overall MPS ${f1(ov)}</h3><p class="flagnote" style="margin:2px 0 0">School Head: ${esc(S[n].head)}</p><p class="lede" style="margin-top:8px">${lede}</p>
   <div class="two"><div><h4>Overall MPS by learning area and grade</h4><div class="tw"><table>${mat}</table></div><div class="legend">${legend()}</div></div>
-  <div><h4>Performance Task and Term Exam by grade</h4>${[1,2,3,4,5,6].map(g=>dumb('Grade '+g,cm(rs.filter(r=>r.g===g),1),cm(rs.filter(r=>r.g===g),4))).join('')}${dleg}</div></div>
+  <div><h4>Summative Tests and Term Exam by grade</h4>${[1,2,3,4,5,6].map(g=>{const m=rs.filter(r=>r.g===g);return dumb('Grade '+g,cm(m,2),cm(m,3),cm(m,4))}).join('')}${dleg}<p class="flagnote" style="margin:4px 0 0">Number on the right: average of the two Summative Tests minus the Term Exam.</p></div></div>
   <div class="two" style="margin-top:18px"><div><h4>Strengths</h4>${st}<h4>Concerns</h4>${co}</div><div><h4>Possible interventions</h4>${iv}</div></div>
   <details><summary>All ${M} results for ${n}</summary><div class="tw" style="margin-top:8px"><table>${tbl(['Grade · area',...COMP,'Overall'],full)}</table></div></details>`;
 }
@@ -360,7 +365,7 @@ function gradeView(g){
   const co=ul([
     `Weakest Term Exam: ${sSorted.slice(0,2).map(x=>`${x[0]} (${f1(cm(x[1],4))})`).join(' and ')}.`,
     `Weakest learning areas on the Term Exam: ${aSorted.slice(0,2).map(x=>`${nm(x[0])} (${f1(cm(x[1],4))})`).join(' and ')}.`,
-    `The Performance Task to Term Exam gap is ${f1(pt-te)} points.`,
+    `The Summative Tests (${f1(cm(rs,2))} and ${f1(cm(rs,3))}) average ${f1((cm(rs,2)+cm(rs,3))/2-te)} points ${(cm(rs,2)+cm(rs,3))/2>=te?'above':'below'} the Term Exam.`,
     `Lowest Term Exam results: ${low.map(r=>`${r.s} ${r.l} (${f1(r.c[4])})`).join(', ')}.`]);
   const iv=ul([
     `Run item analysis on the Grade ${g} Term Exam in ${aSorted.slice(0,2).map(x=>nm(x[0])).join(' and ')} in every school, and compare the least-learned competencies across schools.`,
@@ -368,7 +373,7 @@ function gradeView(g){
     `Use a short weekly check built like the Term Exam so learners practise the test format.`]);
   el('gbody').innerHTML=`<h3>Grade ${g} · overall MPS ${f1(ov)}</h3><p class="lede" style="margin-top:6px">${lede}</p>
   <div class="two"><div><h4>Grade ${g} MPS by school</h4><div class="tw"><table>${tab}</table></div><div class="legend">${legend()}</div></div>
-  <div><h4>Performance Task and Term Exam by school</h4>${sc.map(([n,r])=>dumb(n,cm(r,1),cm(r,4))).join('')}${dleg}</div></div>
+  <div><h4>Summative Tests and Term Exam by school</h4>${sc.map(([n,r])=>dumb(n,cm(r,2),cm(r,3),cm(r,4))).join('')}${dleg}<p class="flagnote" style="margin:4px 0 0">Number on the right: average of the two Summative Tests minus the Term Exam.</p></div></div>
   <div style="margin-top:18px"><h4>Grade ${g} district MPS by learning area</h4><div class="tw"><table>${atab}</table></div></div>
   <div class="two" style="margin-top:18px"><div><h4>Strengths</h4>${st}<h4>Concerns</h4>${co}</div><div><h4>Possible interventions</h4>${iv}</div></div>`;
 }
