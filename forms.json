@@ -1,0 +1,680 @@
+{
+ "cia": {
+  "key": "cia",
+  "title": "CURRICULUM, INSTRUCTION, AND ASSESSMENT MONITORING CHECKLIST",
+  "short": "Curriculum, Instruction and Assessment",
+  "template": "templates/cia.xlsx",
+  "sheets": {
+   "maguikay": "MAGUIKAY ES",
+   "cabancalan1": "CABANCALAN I ES",
+   "tabok1": "TABOK ES 1",
+   "tabok2": "TABOK ES II",
+   "bakilid": "BAKILID ES",
+   "tingub": "TINGUB ES"
+  },
+  "sections": [
+   {
+    "name": "A. CURRICULUM–INSTRUCTION–ASSESSMENT ALIGNMENT",
+    "row": 14,
+    "items": [
+     {
+      "row": 16,
+      "text": "1. MELC mapping (Planned vs Taught vs Assessed) is conducted"
+     },
+     {
+      "row": 17,
+      "text": "2. All MELCs are reflected in lesson plans"
+     },
+     {
+      "row": 18,
+      "text": "3. Assessments are aligned with taught MELCs"
+     },
+     {
+      "row": 19,
+      "text": "4. High-frequency NAT MELCs are prioritized"
+     }
+    ]
+   },
+   {
+    "name": "B. ASSESSMENT QUALITY (HOTS-BASED)",
+    "row": 21,
+    "items": [
+     {
+      "row": 23,
+      "text": "1. Classroom tests include 40–50% HOTS items"
+     },
+     {
+      "row": 24,
+      "text": "2. Test items reflect application, analysis, interpretation"
+     },
+     {
+      "row": 25,
+      "text": "3. NAT-like test items are used"
+     },
+     {
+      "row": 26,
+      "text": "4. Item analysis is conducted after assessments"
+     }
+    ]
+   },
+   {
+    "name": "C. READING ACROSS LEARNING AREAS",
+    "row": 28,
+    "items": [
+     {
+      "row": 30,
+      "text": "1. Reading strategies are integrated in all subjects"
+     },
+     {
+      "row": 31,
+      "text": "2. Vocabulary is pre-taught before lessons"
+     },
+     {
+      "row": 32,
+      "text": "3. Learners explain answers in words"
+     },
+     {
+      "row": 33,
+      "text": "4. Learners justify solutions/answers"
+     }
+    ]
+   },
+   {
+    "name": "D. TARGETED REMEDIATION",
+    "row": 35,
+    "items": [
+     {
+      "row": 37,
+      "text": "1. Item analysis identifies specific MELC gaps"
+     },
+     {
+      "row": 38,
+      "text": "2. Learners are grouped based on skill gaps"
+     },
+     {
+      "row": 39,
+      "text": "3. Remediation activities are focused and MELC-based"
+     },
+     {
+      "row": 40,
+      "text": "4. Progress of learners is regularly monitored"
+     }
+    ]
+   },
+   {
+    "name": "E. DATA UTILIZATION (LAC & INSTRUCTIONAL ADJUSTMENT)",
+    "row": 42,
+    "items": [
+     {
+      "row": 44,
+      "text": "1. Quarterly data review meetings are conducted"
+     },
+     {
+      "row": 45,
+      "text": "2. LAC sessions include data discussion"
+     },
+     {
+      "row": 46,
+      "text": "3. Instruction is adjusted based on data"
+     },
+     {
+      "row": 47,
+      "text": "4. LAC minutes reflect data-based decisions"
+     }
+    ]
+   },
+   {
+    "name": "F. LEARNING RESOURCE (LR) QUALITY & UTILIZATION",
+    "row": 49,
+    "items": [
+     {
+      "row": 51,
+      "text": "1. LRs clearly indicate MELC"
+     },
+     {
+      "row": 52,
+      "text": "2. One MELC is targeted per LR"
+     },
+     {
+      "row": 53,
+      "text": "3. LRs include embedded assessment (rubrics/checks)"
+     },
+     {
+      "row": 54,
+      "text": "4. School conducts LR pre-validation"
+     },
+     {
+      "row": 55,
+      "text": "5. CID-validated LRs are used in lessons"
+     }
+    ]
+   },
+   {
+    "name": "G. TECHNICAL ASSISTANCE (TA) IMPLEMENTATION",
+    "row": 56,
+    "items": [
+     {
+      "row": 58,
+      "text": "1. Baseline data prepared before TA Round 1"
+     },
+     {
+      "row": 59,
+      "text": "2. Priority instructional gaps identified (2–3 only)"
+     },
+     {
+      "row": 60,
+      "text": "3. TA recommendations are applied in class"
+     },
+     {
+      "row": 61,
+      "text": "4. Evidence of implementation is available for TA Round 2"
+     }
+    ]
+   },
+   {
+    "name": "H. INSTRUCTIONAL LEADERSHIP & MONITORING",
+    "row": 63,
+    "items": [
+     {
+      "row": 65,
+      "text": "1. Lesson plans are regularly reviewed"
+     },
+     {
+      "row": 66,
+      "text": "2. Classroom observations are conducted"
+     },
+     {
+      "row": 67,
+      "text": "3. Feedback is provided to teachers"
+     },
+     {
+      "row": 68,
+      "text": "4. Remediation implementation is monitored"
+     },
+     {
+      "row": 69,
+      "text": "5. SIP/AIP, LAC, and TA plans are aligned"
+     }
+    ]
+   },
+   {
+    "name": "I. OVERALL DATA-TO-ACTION CYCLE",
+    "row": 70,
+    "items": [
+     {
+      "row": 72,
+      "text": "1. Data is analyzed regularly"
+     },
+     {
+      "row": 73,
+      "text": "2. Priority gaps are clearly identified"
+     },
+     {
+      "row": 74,
+      "text": "3. Instructional adjustments are implemented"
+     },
+     {
+      "row": 75,
+      "text": "4. Impact is monitored and reviewed"
+     }
+    ]
+   }
+  ],
+  "txt": {
+   "S_row": 78,
+   "A_row": 80,
+   "N_row": 82
+  },
+  "hasSummarySheet": true,
+  "finalTotalRow": 77,
+  "headCell": "A87",
+  "psdsCell": "C91",
+  "abbr": "Curriculum, Instruction & Assessment"
+ },
+ "tqpd": {
+  "key": "tqpd",
+  "title": "TEACHER QUALITY AND PROFESSIONAL DEVELOPMENT MONITORING CHECKLIST",
+  "short": "Teacher Quality and Professional Development",
+  "template": "templates/tqpd.xlsx",
+  "sheets": {
+   "tabok1": "TABOK 1",
+   "tabok2": "TABOK 2",
+   "maguikay": "MAGUIKAY ES",
+   "cabancalan1": "CABANCALAN I ES",
+   "bakilid": "BAKILID ES",
+   "tingub": "TINGUB ES"
+  },
+  "sections": [
+   {
+    "name": "A. NEEDS-BASED PROFESSIONAL DEVELOPMENT PLANNING",
+    "row": 14,
+    "items": [
+     {
+      "row": 16,
+      "text": "1. School conducted PD needs analysis using learner data"
+     },
+     {
+      "row": 17,
+      "text": "2. Priority LAC/INSET topics (2–3 only) are clearly identified"
+     },
+     {
+      "row": 18,
+      "text": "3. PD plan aligns with curriculum, assessment, and remediation gaps"
+     },
+     {
+      "row": 19,
+      "text": "4. School conducted PD needs analysis using learner data"
+     }
+    ]
+   },
+   {
+    "name": "B. LAC IMPLEMENTATION (QUALITY AND ENGAGEMENT)",
+    "row": 21,
+    "items": [
+     {
+      "row": 23,
+      "text": "1. LAC sessions are conducted regularly (monthly)"
+     },
+     {
+      "row": 24,
+      "text": "2. LAC sessions focus on 1–2 priority issues only"
+     },
+     {
+      "row": 25,
+      "text": "3. LACs use interactive strategies (lesson study, peer sharing, planning)"
+     },
+     {
+      "row": 26,
+      "text": "4. Teachers actively participate (not lecture-style sessions)"
+     },
+     {
+      "row": 27,
+      "text": "5. LAC outputs (lesson plans, strategies, materials) are produced"
+     }
+    ]
+   },
+   {
+    "name": "C. INSET DESIGN AND ALIGNMENT",
+    "row": 28,
+    "items": [
+     {
+      "row": 30,
+      "text": "1. INSET program is based on LAC outputs and identified needs"
+     },
+     {
+      "row": 31,
+      "text": "2. INSET sessions deepen learning (not repetition of LAC topics)"
+     },
+     {
+      "row": 32,
+      "text": "3. Appropriate resource persons are utilized"
+     },
+     {
+      "row": 33,
+      "text": "4. INSET program is aligned with division and school priorities"
+     }
+    ]
+   },
+   {
+    "name": "D. PARTICIPATION AND ACCESS",
+    "row": 35,
+    "items": [
+     {
+      "row": 37,
+      "text": "1. 100% teacher participation in LAC sessions"
+     },
+     {
+      "row": 38,
+      "text": "2. 100% teacher participation in INSET"
+     },
+     {
+      "row": 39,
+      "text": "3. Sessions are scheduled within official time"
+     },
+     {
+      "row": 40,
+      "text": "4. Blended/alternative modalities are used when needed"
+     }
+    ]
+   },
+   {
+    "name": "E. APPLICATION OF LEARNING (CRITICAL AREA)",
+    "row": 42,
+    "items": [
+     {
+      "row": 44,
+      "text": "1. Teachers prepare post-LAC/INSET action plans"
+     },
+     {
+      "row": 45,
+      "text": "2. Revised lesson plans reflect new strategies"
+     },
+     {
+      "row": 46,
+      "text": "3. Improved assessment practices are evident"
+     },
+     {
+      "row": 47,
+      "text": "4. Classroom practices reflect LAC/INSET learning (based on observation)"
+     },
+     {
+      "row": 48,
+      "text": "5. Teachers share results/experiences in succeeding LAC sessions"
+     }
+    ]
+   },
+   {
+    "name": "F. DOCUMENTATION AND MONITORING",
+    "row": 49,
+    "items": [
+     {
+      "row": 51,
+      "text": "1. LAC attendance and minutes are complete and updated"
+     },
+     {
+      "row": 52,
+      "text": "2. INSET reports and documentation are available"
+     },
+     {
+      "row": 53,
+      "text": "3. Teacher action plans are compiled and monitored"
+     },
+     {
+      "row": 54,
+      "text": "4. Documentation is used to plan follow-up actions"
+     }
+    ]
+   },
+   {
+    "name": "G. INSTRUCTIONAL LEADERSHIP (ROLE OF SCHOOL HEAD)",
+    "row": 56,
+    "items": [
+     {
+      "row": 58,
+      "text": "1. School head ensures 100% participation"
+     },
+     {
+      "row": 59,
+      "text": "2. School head monitors LAC/INSET outputs and application"
+     },
+     {
+      "row": 60,
+      "text": "3. School head actively participates in PD sessions"
+     },
+     {
+      "row": 61,
+      "text": "4. Follow-through actions are implemented and tracked"
+     }
+    ]
+   },
+   {
+    "name": "H. MENTORING AND SCHOLARSHIP READINESS",
+    "row": 63,
+    "items": [
+     {
+      "row": 65,
+      "text": "1. Potential scholarship applicants are identified"
+     },
+     {
+      "row": 66,
+      "text": "2. Mentoring system is established (with assigned mentors)"
+     },
+     {
+      "row": 67,
+      "text": "3. Mentoring sessions are conducted and documented"
+     },
+     {
+      "row": 68,
+      "text": "4. Teachers maintain updated portfolios (lesson plans, assessments, data)"
+     },
+     {
+      "row": 69,
+      "text": "5. Re-entry plans are required for endorsed applicants"
+     }
+    ]
+   },
+   {
+    "name": "I. LEARNING RESOURCE (LR) UTILIZATION AND SUPPORT",
+    "row": 70,
+    "items": [
+     {
+      "row": 72,
+      "text": "1. School conducted LR utilization/needs assessment"
+     },
+     {
+      "row": 73,
+      "text": "2. LRs are aligned with MELCs and lesson objectives"
+     },
+     {
+      "row": 74,
+      "text": "3. Teachers use print, digital, and OER strategically"
+     },
+     {
+      "row": 75,
+      "text": "4. LRs are integrated in instruction, assessment, and remediation"
+     },
+     {
+      "row": 76,
+      "text": "5. LR use is discussed and reflected in LAC sessions"
+     }
+    ]
+   },
+   {
+    "name": "J. IMPACT ON TEACHING AND LEARNING (HIGH-LEVEL CHECK)",
+    "row": 77,
+    "items": [
+     {
+      "row": 79,
+      "text": "1. Teaching practices show improvement (based on observation)"
+     },
+     {
+      "row": 80,
+      "text": "2. Assessment quality has improved (HOTS, alignment)"
+     },
+     {
+      "row": 81,
+      "text": "3. Learner engagement is evident"
+     },
+     {
+      "row": 82,
+      "text": "4. Evidence of improved learner performance is available"
+     }
+    ]
+   }
+  ],
+  "txt": {
+   "S_row": 86,
+   "A_row": 88,
+   "N_row": 90
+  },
+  "hasSummarySheet": false,
+  "finalTotalRow": 84,
+  "headCell": "A95",
+  "psdsCell": "D99",
+  "abbr": "Teacher Quality & Prof. Development"
+ },
+ "ldp": {
+  "key": "ldp",
+  "title": "LEARNER DEVELOPMENT AND PROTECTION MONITORING CHECKLIST",
+  "short": "Learner Development and Protection",
+  "template": "templates/ldp.xlsx",
+  "sheets": {
+   "tabok1": "TABOK ES I",
+   "tabok2": "TABOK ES II",
+   "maguikay": "MAGUIKAY ES",
+   "cabancalan1": "CABANCALAN I ES",
+   "bakilid": "BAKILID ES",
+   "tingub": "TINGUB ES"
+  },
+  "sections": [
+   {
+    "name": "A. IDENTIFY (Early Identification of At-Risk Learners)",
+    "row": 14,
+    "items": [
+     {
+      "row": 16,
+      "text": "1. Attendance (SF2), academic (SF5), and behavior data are regularly reviewed"
+     },
+     {
+      "row": 17,
+      "text": "2. Teachers maintain classroom learner tracking sheets"
+     },
+     {
+      "row": 18,
+      "text": "3. School has a master list of at-risk learners"
+     },
+     {
+      "row": 19,
+      "text": "4. At-risk learners are profiled (academic, behavioral, socio-economic factors)"
+     },
+     {
+      "row": 20,
+      "text": "5. Root cause analysis is conducted for identified learners"
+     },
+     {
+      "row": 21,
+      "text": "6. School Learner Tracking Team (SLTT) is organized and functional"
+     }
+    ]
+   },
+   {
+    "name": "B. SUPPORT (Targeted Interventions & Differentiated Instruction)",
+    "row": 26,
+    "items": [
+     {
+      "row": 28,
+      "text": "7. Targeted remediation programs are implemented (not general review)"
+     },
+     {
+      "row": 29,
+      "text": "8. Learners are grouped based on specific learning gaps"
+     },
+     {
+      "row": 30,
+      "text": "9. Differentiated instruction strategies are evident in teaching"
+     },
+     {
+      "row": 31,
+      "text": "10. Peer tutoring or learning buddy system is implemented"
+     },
+     {
+      "row": 32,
+      "text": "11. Counseling or psychosocial support is provided when needed"
+     },
+     {
+      "row": 33,
+      "text": "12. Intervention plans are documented per learner/group"
+     },
+     {
+      "row": 34,
+      "text": "13. Appropriate and contextualized learning materials are used"
+     }
+    ]
+   },
+   {
+    "name": "C. ENGAGE (Safe, Inclusive, and Supportive Environment)",
+    "row": 38,
+    "items": [
+     {
+      "row": 40,
+      "text": "14. SEL (Social-Emotional Learning) is integrated in daily lessons"
+     },
+     {
+      "row": 41,
+      "text": "15. Teachers use strategies that develop self- awareness and relationships"
+     },
+     {
+      "row": 42,
+      "text": "16. Classroom environment promotes respect and inclusivity"
+     },
+     {
+      "row": 43,
+      "text": "17. Positive discipline practices are observed (no punitive approach)"
+     },
+     {
+      "row": 44,
+      "text": "18. Child Protection Committee (CPC) is active and functional"
+     },
+     {
+      "row": 45,
+      "text": "19. Anti-bullying and child protection programs are implemented"
+     },
+     {
+      "row": 46,
+      "text": "20. Learners are given opportunities to express ideas and feelings"
+     }
+    ]
+   },
+   {
+    "name": "D. MONITOR (Tracking Progress & Adjusting Interventions)",
+    "row": 50,
+    "items": [
+     {
+      "row": 52,
+      "text": "21. Monthly monitoring of learner attendance and performance is conducted"
+     },
+     {
+      "row": 53,
+      "text": "22. Learner tracking records are regularly updated"
+     },
+     {
+      "row": 54,
+      "text": "23. SLTT conducts quarterly review meetings"
+     },
+     {
+      "row": 55,
+      "text": "24. Interventions are adjusted based on learner progress"
+     },
+     {
+      "row": 56,
+      "text": "25. Formative assessments are used to track improvement"
+     },
+     {
+      "row": 57,
+      "text": "26. Reduction in number of at-risk learners is monitored"
+     }
+    ]
+   },
+   {
+    "name": "E. COLLABORATE (Home–School–Community Partnership)",
+    "row": 62,
+    "items": [
+     {
+      "row": 64,
+      "text": "27. Parents are regularly informed of learner progress"
+     },
+     {
+      "row": 65,
+      "text": "28. Parent conferences for at-risk learners are conducted"
+     },
+     {
+      "row": 66,
+      "text": "29. Home visitation is implemented for frequent absentees"
+     },
+     {
+      "row": 67,
+      "text": "30. School coordinates with barangay/community stakeholders"
+     },
+     {
+      "row": 68,
+      "text": "31. LAC sessions discuss learner cases and interventions"
+     },
+     {
+      "row": 69,
+      "text": "32. Best practices are documented and shared"
+     }
+    ]
+   }
+  ],
+  "txt": {
+   "S_row": 75,
+   "A_row": 77,
+   "N_row": 79
+  },
+  "hasSummarySheet": true,
+  "finalTotalRow": 74,
+  "headCell": "A84",
+  "psdsCell": "D88",
+  "abbr": "Learner Development & Protection"
+ }
+}

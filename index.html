@@ -1,5 +1,9 @@
-<title>West 1 District - Elementary Dashboard</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>West 1 District</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: facade banner with logo plate, sticky section tabs, then KPI strip, charts and written analysis per section */
@@ -132,17 +136,28 @@ details{margin-top:14px}summary{cursor:pointer;font-weight:600}
 .sc h3{font-size:17px}.sc .v{font-family:var(--font-d);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
 .sc p{margin:2px 0;font-size:13.5px;color:var(--muted)}
 </style>
+<link rel="stylesheet" href="css/cid.css">
+</head>
+<body>
+
+
+
+
+
+
 <div class="wrap">
   <header class="hero">
     <div class="hero-in">
       <div class="hero-t">
-        <div class="eyebrow">Mandaue City · SAPM Term 1 · SY 2026-2027</div>
+        <div class="eyebrow">Mandaue City · West I District · SY 2026-2027</div>
         <h1>West 1 District - Elementary Dashboard</h1>
-        <p>School Assessment Performance Monitoring · Term 1 Mean Percentage Scores, least-learned competencies and action plan</p>
+        <p>School Assessment Performance Monitoring (SAPM) and CID Monitoring Checklists</p>
         <div class="stats" id="hstats"></div>
       </div>
     </div>
   </header>
+  <nav class="mainnav" aria-label="Main"><div class="navrow" role="tablist"><button class="mt" id="mt-sapm" type="button" role="tab" aria-selected="true">SAPM</button><button class="mt" id="mt-cid" type="button" role="tab" aria-selected="false">CID Monitoring Checklist</button></div></nav>
+  <div id="pane-sapm">
   <nav class="top" aria-label="Sections"><div class="navrow" id="nav" role="tablist"></div></nav>
   <p class="meta">School Year 2026-2027 · Term 1 · Six schools: Bakilid, Cabancalan I, Maguikay, Tabok 1, Tabok 2 and Tingub · Submissions dated 11 to 16 September 2026</p>
 
@@ -202,6 +217,8 @@ details{margin-top:14px}summary{cursor:pointer;font-weight:600}
     <div class="card" style="margin-top:14px"><h2>Source files</h2><p style="margin:0">Six School Assessment Performance Monitoring Tool documents (Word), one per school: BAKILID ES_SAPM, SAPM_Cabancalan 1 ES, SAPM_Maguikay ES, SAPM_TABOK ES1, SAPM_TabokES2 and SAPM_Tingub ES. This page uses Part I (MPS by grade and learning area) and Part III (least-learned competencies). The schools' own Part II summaries were not used, because several do not match Part I.</p></div>
   </section>
   <footer>WW = Written Work · PT = Performance Task · ST 1 and ST 2 = Summative Tests · TE = Term Exam · MPS = Mean Percentage Score. School, grade and district averages are simple means of the rows in the files, not weighted by learners.</footer>
+  </div>
+  <div id="pane-cid" hidden></div>
 </div>
 
 <script>
@@ -273,7 +290,7 @@ el('ptte-take').textContent=`The gap runs from ${f1(Math.min(...SN.map(n=>gapOf(
   let s=`<svg class="svgc" viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter of Performance Task score against Term Exam score">`;
   for(let v=50;v<=100;v+=10){s+=`<line x1="${x(v)}" x2="${x(v)}" y1="${y(50)}" y2="${y(100)}" stroke="var(--line)"/><line x1="${L}" x2="${W-10}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${x(v)}" y="${H-12}" text-anchor="middle">${v}</text><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`}
   s+=`<line x1="${x(50)}" y1="${y(50)}" x2="${x(100)}" y2="${y(100)}" stroke="var(--muted)" stroke-dasharray="4 4"/><line x1="${x(75)}" x2="${x(75)}" y1="${y(50)}" y2="${y(100)}" stroke="var(--red)" stroke-dasharray="3 3" opacity=".6"/><line x1="${L}" x2="${W-10}" y1="${y(75)}" y2="${y(75)}" stroke="var(--red)" stroke-dasharray="3 3" opacity=".6"/>`;
-  all.forEach(r=>{const g4=r.g===4;s+=`<circle cx="${x(Math.max(50,r.c[1]))}" cy="${y(Math.max(50,r.c[4]))}" r="${g4?5.5:4.5}" fill="${g4?'var(--tec)':'var(--ptc)'}" fill-opacity=".62" stroke="var(--card)" stroke-width="1"><title>${r.s} ${lab(r)}: PT ${f1(r.c[1])}, TE ${f1(r.c[4])}</title></circle>`});
+  all.forEach(r=>{const g4=r.g===4;s+=`<circle cx="${x(Math.max(50,r.c[1]))}" cy="${y(Math.max(50,r.c[4]))}" r="${g4?5.5:4.5}" fill="${g4?'var(--tec)':'var(--ptc)'}" fill-opacity=".62" stroke="var(--card)" stroke-width="1"></circle>`});
   s+=`<text x="${(L+W)/2}" y="${H}" text-anchor="middle">Performance Task MPS</text><text transform="translate(11 ${H/2}) rotate(-90)" text-anchor="middle">Term Exam MPS</text></svg><div class="legend"><span><i class="o" style="background:var(--tec)"></i>Grade 4</span><span><i class="o" style="background:var(--ptc)"></i>Other grades</span><span>Dashed diagonal: equal scores</span></div>`;el('scatter').innerHTML=s})();
 el('tegrid').innerHTML=tbl(['School',1,2,3,4,5,6].map((x,i)=>i?'Gr '+x:x),SN.map(n=>`<tr><td class="l">${n}</td>`+[1,2,3,4,5,6].map(g=>cell(cm(bySchool(n).filter(r=>r.g===g),4))).join('')+'</tr>').join('')+`<tr class="sum"><td class="l">District</td>`+[1,2,3,4,5,6].map(g=>cell(cm(byGrade(g),4))).join('')+'</tr>');
 el('leg3').innerHTML=legend();
@@ -371,7 +388,7 @@ function lineChart(rs){
   for(let v=50;v<=100;v+=10)s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
   for(let g=1;g<=6;g++)s+=`<text x="${x(g)}" y="${H-8}" text-anchor="middle">Gr ${g}</text>`;
   s+=`<line x1="${L}" x2="${W-R}" y1="${y(75)}" y2="${y(75)}" stroke="var(--red)" stroke-dasharray="3 3"/>`;
-  ser.forEach(l=>{if(!l[1].length)return;s+=`<polyline fill="none" stroke="${l[2]}" stroke-width="2.4" ${l[3]?`stroke-dasharray="${l[3]}"`:''} points="${l[1].map(p=>x(p[0])+','+y(p[1])).join(' ')}"/>`+l[1].map(p=>`<circle cx="${x(p[0])}" cy="${y(p[1])}" r="3.6" fill="${l[2]}"><title>${l[0]} Grade ${p[0]}: ${f1(p[1])}</title></circle>`).join('')});
+  ser.forEach(l=>{if(!l[1].length)return;s+=`<polyline fill="none" stroke="${l[2]}" stroke-width="2.4" ${l[3]?`stroke-dasharray="${l[3]}"`:''} points="${l[1].map(p=>x(p[0])+','+y(p[1])).join(' ')}"/>`+l[1].map(p=>`<circle cx="${x(p[0])}" cy="${y(p[1])}" r="3.6" fill="${l[2]}"></circle>`).join('')});
   s+='</svg><div class="legend">'+ser.map(l=>`<span><i style="background:${l[2]};${l[3]?'opacity:.6':''}"></i>${l[0]}</span>`).join('')+'<span><span class="tgtkey" style="border-left-style:dashed"></span>75</span></div>';
   return s}
 let curA=0;
@@ -506,7 +523,18 @@ el('copy').onclick=async()=>{try{await navigator.clipboard.writeText(csv);el('co
 const SEC=[['overview','Overview'],['schools','By school'],['grades','By grade level'],['areas','By learning area'],['llc','Least-learned competencies'],['findings','Key findings'],['plan','Action plan'],['data','Data and notes']];
 SEC.forEach(s=>{const b=document.createElement('button');b.className='nt';b.id='t-'+s[0];b.textContent=s[1];b.type='button';b.setAttribute('role','tab');b.onclick=()=>show(s[0],true);el('nav').appendChild(b)});
 function show(k,push){if(!SEC.some(s=>s[0]===k))k='overview';SEC.forEach(s=>{el('s-'+s[0]).hidden=s[0]!==k;el('t-'+s[0]).setAttribute('aria-selected',s[0]===k)});if(push){try{location.hash=k}catch(e){}}}
-addEventListener('hashchange',()=>show((location.hash||'').replace('#',''),false));
-show((location.hash||'').replace('#',''),false);
-
+let lastSec='overview';
+function route(){const h=(location.hash||'').replace('#','');const cid=h==='cid';el('pane-sapm').hidden=cid;el('pane-cid').hidden=!cid;el('mt-sapm').setAttribute('aria-selected',String(!cid));el('mt-cid').setAttribute('aria-selected',String(cid));if(cid){if(window.CidApp)CidApp.mount()}else{show(h,false);lastSec=SEC.some(s=>s[0]===h)?h:'overview'}}
+el('mt-sapm').onclick=()=>{location.hash=lastSec};
+el('mt-cid').onclick=()=>{location.hash='cid'};
+addEventListener('hashchange',route);
+window.addEventListener('load',route);
+route();
 </script>
+
+
+<script src="vendor/jszip.min.js"></script>
+<script src="js/cid-xlsx.js"></script>
+<script src="js/cid.js"></script>
+</body>
+</html>
